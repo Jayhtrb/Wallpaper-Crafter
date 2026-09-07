@@ -1,0 +1,42 @@
+{
+  "name": "flight-tracker-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Real-time HYD outbound flight price tracker - API, scraper workers, and WebSocket push",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "worker": "node src/jobs/worker.js",
+    "migrate": "node src/models/migrate.js",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "bullmq": "^5.12.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "ioredis": "^5.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.8.0",
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.3",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.12.0",
+    "playwright": "^1.46.0",
+    "socket.io": "^4.7.5",
+    "web-push": "^3.6.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.0",
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}

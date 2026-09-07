@@ -1,1 +1,8 @@
 .DS_Store
+
+# flight-tracker
+flight-tracker/**/node_modules
+flight-tracker/**/.env
+flight-tracker/backend/dist
+flight-tracker/frontend/dist
+
