@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/flight_tracker_raw";
+const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/hydrafly_raw";
 
 const client = new MongoClient(MONGO_URL);
 let db = null;

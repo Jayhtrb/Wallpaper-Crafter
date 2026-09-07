@@ -1,8 +1,10 @@
-# Flight Price Tracker — HYD
+# HydraFly
 
 A real-time, proactive price tracker for international flights departing
-Hyderabad (HYD). It doesn't just search on demand — a scheduled worker scans
-the top destinations every 2 hours, stores history, and pushes live price
+Hyderabad (HYD). "Hydra" for the many-headed watch it keeps — dozens of
+destinations scanned across multiple sources at once — "Fly" for what it's
+tracking. It doesn't just search on demand — a scheduled worker scans the
+top destinations every 2 hours, stores history, and pushes live price
 updates and fare-drop alerts over WebSockets.
 
 ## Status: working scaffold, not a finished product
@@ -24,7 +26,7 @@ prefers it over scraping when configured (see `src/jobs/worker.js`).
 ## Architecture
 
 ```
-flight-tracker/
+hydrafly/
 ├── docker-compose.yml       # Redis + Postgres + MongoDB (local infra)
 ├── .env.example
 ├── backend/
@@ -106,7 +108,6 @@ flight-tracker/
 ## Running it locally
 
 ```bash
-cd flight-tracker
 cp .env.example .env          # then fill in whatever keys you have — none are required to boot
 docker compose up -d          # Redis, Postgres (auto-runs sql/001_init.sql), MongoDB
 
@@ -143,7 +144,7 @@ variables to your deployed backend URL.
 **Backend → Render (simplest) or AWS EC2**
 
 *Render:*
-1. New → Web Service, point at this repo, root directory `flight-tracker/backend`, use the provided `Dockerfile`.
+1. New → Web Service, point at this repo, root directory `backend`, use the provided `Dockerfile`.
 2. Add a second Render service (Background Worker type) from the same repo/Dockerfile, override the start command to `node src/jobs/worker.js`.
 3. Provision Render's managed Postgres and Redis add-ons (or point at your own), and a MongoDB Atlas free-tier cluster — set `DATABASE_URL`, `REDIS_URL`, `MONGO_URL` accordingly.
 4. Run `npm run migrate` once (Render's shell, or a one-off job) to apply `sql/001_init.sql` if the managed Postgres didn't auto-run it.
@@ -151,7 +152,7 @@ variables to your deployed backend URL.
 *AWS EC2 (more control, more setup):*
 1. Launch an instance (t3.medium+ recommended — Playwright's Chromium is memory-hungry), install Docker.
 2. `docker compose up -d` for infra, or point at managed RDS/ElastiCache/DocumentDB instead.
-3. Run `docker build -t flight-tracker-backend backend/` then two containers off that image — one default (API), one with `command: node src/jobs/worker.js`.
+3. Run `docker build -t hydrafly-backend backend/` then two containers off that image — one default (API), one with `command: node src/jobs/worker.js`.
 4. Put the API behind an ALB/nginx with TLS; the frontend on Vercel talks to it over HTTPS.
 
 ## Monitoring

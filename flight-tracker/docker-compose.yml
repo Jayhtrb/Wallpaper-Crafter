@@ -3,7 +3,7 @@ version: "3.9"
 services:
   redis:
     image: redis:7-alpine
-    container_name: flight-tracker-redis
+    container_name: hydrafly-redis
     ports:
       - "6379:6379"
     volumes:
@@ -17,29 +17,29 @@ services:
 
   postgres:
     image: postgres:16-alpine
-    container_name: flight-tracker-postgres
+    container_name: hydrafly-postgres
     environment:
-      POSTGRES_USER: flighttracker
-      POSTGRES_PASSWORD: flighttracker
-      POSTGRES_DB: flight_tracker
+      POSTGRES_USER: hydrafly
+      POSTGRES_PASSWORD: hydrafly
+      POSTGRES_DB: hydrafly
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/sql:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U flighttracker"]
+      test: ["CMD-SHELL", "pg_isready -U hydrafly"]
       interval: 5s
       timeout: 3s
       retries: 5
 
   mongo:
     image: mongo:7
-    container_name: flight-tracker-mongo
+    container_name: hydrafly-mongo
     environment:
-      MONGO_INITDB_ROOT_USERNAME: flighttracker
-      MONGO_INITDB_ROOT_PASSWORD: flighttracker
-      MONGO_INITDB_DATABASE: flight_tracker_raw
+      MONGO_INITDB_ROOT_USERNAME: hydrafly
+      MONGO_INITDB_ROOT_PASSWORD: hydrafly
+      MONGO_INITDB_DATABASE: hydrafly_raw
     ports:
       - "27017:27017"
     volumes:

@@ -1,9 +1,9 @@
 {
-  "name": "flight-tracker-backend",
+  "name": "hydrafly-backend",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Real-time HYD outbound flight price tracker - API, scraper workers, and WebSocket push",
+  "description": "HydraFly - real-time HYD outbound flight price tracker - API, scraper workers, and WebSocket push",
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",

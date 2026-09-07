@@ -62,7 +62,7 @@ export default function App() {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-4">
         <div className="text-center">
-          <p className="text-sm uppercase tracking-widest text-brand-400">HYD outbound</p>
+          <p className="text-sm uppercase tracking-widest text-brand-400">HydraFly · HYD outbound</p>
           <h1 className="mt-2 text-4xl font-bold sm:text-5xl">When do you want to fly?</h1>
         </div>
 
@@ -89,7 +89,7 @@ export default function App() {
     <div className="mx-auto max-w-6xl px-4 py-8">
       <header className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold">HYD → Anywhere</h1>
+          <h1 className="text-2xl font-bold">HydraFly · HYD → Anywhere</h1>
           <p className="text-sm text-slate-500">
             Departing {departDate} · {connected ? "live" : "connecting…"}
           </p>
